@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<title>Woordenlijst Klassieke Talen - Coornhert Gymnasium</title>
+		<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+		<style>
+			body {
+				background-color: #eee;
+			}
+			.row {
+				margin: 10px;
+				padding: 10px;
+			}
+			.answers {
+				background-color: #fff;
+				border: 1px solid #ced4da;
+				border-radius: .25rem;
+				margin: 10px;
+				padding: 10px;
+			}
+			#language {
+				width: 100%;
+			}
+			
+			.btn-group {
+				padding: 0;
+			}
+			.fixed-images {
+				border-top: 3px solid #aaa;
+				position: fixed;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 100%;
+				bottom: 0;
+				z-index: 2;
+			}
+			#keyboard-hide {
+				position: fixed;
+				bottom: 0;
+				z-index: 3;
+			}
+			
+			.image {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 100%;
+			}
+			
+			#smaller {
+				width: 50%;
+			}
+			#counter {
+				background-color: #fff;
+				border: 1px solid #ced4da;
+				border-radius: .25rem;
+			}
+			#counter > p {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="row">
+			<div class="btn-group col-sm-2">
+				<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="language">
+					Grieks
+				</button>
+				<div class="dropdown-menu">
+					<button class="dropdown-item secondary" onclick="latin()" id="latin">Latijn</button>
+					<button class="dropdown-item secondary" onclick="greek()" id="greek">Grieks</button>
+				</div>
+			</div>
+			<input type="text" id="in" placeholder="Woord" class="form-control col-sm-8">
+			<button type="button" class="btn btn-secondary col-sm-2" onclick="calc()" id="go">Zoeken</button>
+		</div>
+		<img src="greek-keyboard2.jpg" class="fixed-images unblock" id="keyboard" usemap="#keys">
+		<map id="keys" name="keys">
+			<area shape="rect" coords="453,145,560,198" href="javascrtipt:insertChar('\u03C9');">
+		</map>
+		<button type="button" class="btn btn-secondary" id="keyboard-hide" onclick="hideKeyboard()">Hide keyboard</button>
+		<script src="jquery.js"></script>
+		<script>
+			if(window.localStorage.getItem("alreadyVisited") === null) {
+				window.localStorage.setItem("alreadyVisited", "yes");
+				$.get("increasecounter.php");
+			}
+		</script>
+		<script src="calc.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	</body>
+</html>
